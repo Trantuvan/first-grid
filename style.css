@@ -4,10 +4,16 @@
 }
 
 .container {
+  min-height: 100vh;
   text-align: center;
   display: grid;
   gap: 4px;
   grid-template-columns: 1fr 4fr;
+  grid-template-areas:
+    "header header"
+    "sidebar nav"
+    "sidebar article"
+    "footer footer";
 }
 
 .container div {
@@ -19,18 +25,15 @@
 }
 
 .header {
-  grid-column: 1 / span 2;
+  grid-area: header;
   background-color: #393f4d;
   display: grid;
   grid-template-columns: 1fr 2fr;
+  align-items: center;
 }
 
-.logo {
+.header .logo {
   justify-self: start;
-}
-
-.menu {
-  align-self: center;
 }
 
 .menu ul {
@@ -45,14 +48,13 @@
 }
 
 .sidebar {
-  grid-row: 2 / span 2;
+  grid-area: sidebar;
   background-color: #ff7755;
   display: grid;
   gap: 50px;
 }
 
-.side-content,
-.photo {
+.sidebar > * {
   display: grid;
   align-items: center;
 }
@@ -73,26 +75,29 @@
 }
 
 .nav {
+  grid-area: nav;
   background-color: #ff7755;
+  display: grid;
+  align-items: center;
 }
 
 .nav ul {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 .nav ul li {
+  list-style: none;
   font-size: 16px;
   text-transform: uppercase;
-  list-style: none;
 }
 
 .article {
+  grid-area: article;
   background-color: #bccbde;
   display: grid;
   gap: 15px;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  /* grid-template-rows: repeat(2, 1fr); */
 }
 
 .article p {
@@ -103,26 +108,26 @@
 }
 
 .article .card {
+  min-height: 200px;
   background-color: #ffffff;
   color: black;
   text-align: center;
-  min-height: 200px;
 }
 
 .card p {
   color: black;
   font-weight: normal;
   font-size: 14px;
-  padding: 5px;
 }
 
 .card .title {
   font-size: 18px;
   text-align: center;
+  margin-bottom: 10px;
 }
 
 .footer {
-  grid-column: 1 / span 2;
+  grid-area: footer;
   background-color: #393f4d;
 }
 
